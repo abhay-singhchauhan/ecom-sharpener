@@ -1,0 +1,19 @@
+.tableinside img {
+  height: 50px;
+}
+.tableinside td:nth-child(1) {
+  display: flex;
+  align-items: center;
+
+  margin: 0px;
+}
+.tableinside td:nth-child(1) img {
+  margin-right: 10px;
+}
+.tableinside {
+  width: 100%;
+}
+.tableinside input {
+  width: 30px;
+  margin-right: 10px;
+}

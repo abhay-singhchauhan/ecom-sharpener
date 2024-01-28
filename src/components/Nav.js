@@ -1,7 +1,7 @@
 import { Button, Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import "./Nav.css";
 
-function nav() {
+function nav(props) {
   return (
     <div className="NavCont">
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -10,7 +10,9 @@ function nav() {
           <Nav.Link href="#store">Store</Nav.Link>
           <Nav.Link href="#about">About</Nav.Link>
           <Nav.Link href="#cart">
-            <Button variant="secondary">Cart :- 0</Button>
+            <Button onClick={props.onOpen} variant="secondary">
+              Cart :- 0
+            </Button>
           </Nav.Link>
         </Nav>
       </Navbar>
