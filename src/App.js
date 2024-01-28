@@ -4,8 +4,19 @@ import Heading from "./components/Heading";
 import ProductCart from "./components/ProductCard";
 import Cart from "./components/Cart";
 import ContextProvider from "./context/contextProvider";
+import About from "./components/About";
 import { useState } from "react";
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+const routers = createBrowserRouter([
+  {
+    path: "/",
+    element: <ProductCart></ProductCart>,
+  },
+  {
+    path: "/about",
+    element: <About></About>,
+  },
+]);
 function App() {
   const [show, setShow] = useState(false);
 
@@ -14,10 +25,9 @@ function App() {
 
   return (
     <ContextProvider>
-      {" "}
       <Nav onOpen={handleShow}></Nav>
       <Heading></Heading>
-      <ProductCart></ProductCart>
+      <RouterProvider router={routers}></RouterProvider>
       <Cart onClose={handleClose} onOpen={handleShow} current={show}></Cart>
     </ContextProvider>
   );
