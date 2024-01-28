@@ -3,6 +3,7 @@ import Nav from "./components/Nav";
 import Heading from "./components/Heading";
 import ProductCart from "./components/ProductCard";
 import Cart from "./components/Cart";
+import ContextProvider from "./context/contextProvider";
 import { useState } from "react";
 
 function App() {
@@ -12,12 +13,13 @@ function App() {
   const handleShow = () => setShow(true);
 
   return (
-    <div>
+    <ContextProvider>
+      {" "}
       <Nav onOpen={handleShow}></Nav>
       <Heading></Heading>
       <ProductCart></ProductCart>
       <Cart onClose={handleClose} onOpen={handleShow} current={show}></Cart>
-    </div>
+    </ContextProvider>
   );
 }
 

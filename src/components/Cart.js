@@ -1,44 +1,12 @@
-import { useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./Cart.css";
+import Context from "../context/context";
 
 function Example(props) {
-  const arr = [
-    {
-      title: "Colors",
+  const cnxt = useContext(Context);
 
-      price: 100,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-
-      quantity: 2,
-    },
-
-    {
-      title: "Black and white Colors",
-
-      price: 50,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-
-      quantity: 3,
-    },
-
-    {
-      title: "Yellow and Black Colors",
-
-      price: 70,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-
-      quantity: 1,
-    },
-  ];
-  const [cartElements, setCartElements] = useState(arr);
   return (
     <>
       <Modal
@@ -60,7 +28,7 @@ function Example(props) {
               </tr>
             </thead>
             <tbody>
-              {cartElements.map((ele) => (
+              {cnxt.items.map((ele) => (
                 <tr>
                   <td>
                     <img src={ele.imageUrl}></img>
@@ -71,13 +39,17 @@ function Example(props) {
                   </td>
                   <td>
                     <input type="number" value={1} min={1}></input>
-                    <Button>Remove</Button>
+                    <Button onClick={() => cnxt.removeItem(ele)}>Remove</Button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </Modal.Body>
+        <div className="totalAmount">
+          <h5>Total</h5>
+          <h5>${cnxt.totalAmount}</h5>
+        </div>
         <Modal.Footer>
           <Button variant="secondary" onClick={props.onClose}>
             Close

@@ -1,27 +1,33 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
+import Context from "../context/context";
 
 const MyCard = () => {
+  const cnxt = useContext(Context);
   const arr = [
     {
+      id: 1,
       title: "Colors",
       price: 100,
       imageUrl:
         "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
     },
     {
+      id: 2,
       title: "Black and white Colors",
       price: 50,
       imageUrl:
         "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
     },
     {
+      id: 3,
       title: "Yellow and Black Colors",
       price: 70,
       imageUrl:
         "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
     },
     {
+      id: 4,
       title: "Blue Color",
       price: 100,
       imageUrl:
@@ -32,7 +38,7 @@ const MyCard = () => {
 
   return (
     <div className="rowCont">
-      <Row>
+      <Row className="mx-auto">
         {productsArr.map((ele, index) => (
           <Col key={index} md={6} lg={6} xl={6} className="mb-2">
             <Card style={{ width: "18rem" }}>
@@ -45,7 +51,11 @@ const MyCard = () => {
                 />
                 <div className="d-flex align-items-center justify-content-between">
                   <Card.Text>{`$ ${ele.price}`}</Card.Text>
-                  <Button variant="primary" className="ml-2">
+                  <Button
+                    onClick={() => cnxt.addItem(ele)}
+                    variant="primary"
+                    className="ml-2"
+                  >
                     Add To Cart
                   </Button>
                 </div>
