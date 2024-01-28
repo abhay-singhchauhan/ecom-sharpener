@@ -7,6 +7,7 @@ import ContextProvider from "./context/contextProvider";
 import About from "./components/About";
 import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./components/Home";
 const routers = createBrowserRouter([
   {
     path: "/",
@@ -15,6 +16,10 @@ const routers = createBrowserRouter([
   {
     path: "/about",
     element: <About></About>,
+  },
+  {
+    path: "/home",
+    element: <Home></Home>,
   },
 ]);
 function App() {

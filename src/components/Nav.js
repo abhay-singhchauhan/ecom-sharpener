@@ -15,7 +15,7 @@ function NavComp(props) {
     <div className="NavCont">
       <Navbar expand="lg" className="bg-body-tertiary">
         <Nav className="me-auto">
-          <Nav.Link onClick={() => toRoute("/")} href="#home">
+          <Nav.Link onClick={() => toRoute("/home")} href="#home">
             Home
           </Nav.Link>
           <Nav.Link onClick={() => toRoute("/")} href="#store">
