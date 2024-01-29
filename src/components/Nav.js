@@ -2,33 +2,35 @@ import { Button, Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import "./Nav.css";
 import Context from "../context/context";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 function NavComp(props) {
   const Cnxt = useContext(Context);
 
   console.log(Cnxt);
 
-  function toRoute(str) {
-    window.location = str;
-  }
   return (
     <div className="NavCont">
       <Navbar expand="lg" className="bg-body-tertiary">
         <Nav className="me-auto">
-          <Nav.Link onClick={() => toRoute("/home")} href="#home">
-            Home
-          </Nav.Link>
-          <Nav.Link onClick={() => toRoute("/")} href="#store">
-            Store
-          </Nav.Link>
-          <Nav.Link onClick={() => toRoute("/about")} href="#about">
-            About
-          </Nav.Link>
-          <Nav.Link href="#cart">
+          <Link to={"/home"}>
+            <div>Home</div>
+          </Link>
+          <Link to={"/"}>
+            <div>Store</div>
+          </Link>
+          <Link to={"/about"}>
+            <div>About</div>
+          </Link>
+          <Link to={"/contacts"}>
+            <div>Contacts</div>
+          </Link>
+
+          <div>
             <Button onClick={props.onOpen} variant="secondary">
               Cart :- {Cnxt.items.length}
             </Button>
-          </Nav.Link>
+          </div>
         </Nav>
       </Navbar>
     </div>

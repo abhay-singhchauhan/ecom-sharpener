@@ -1,27 +1,15 @@
 import "./App.css";
 import Nav from "./components/Nav";
 import Heading from "./components/Heading";
-import ProductCart from "./components/ProductCard";
+import ProductCard from "./components/ProductCard";
 import Cart from "./components/Cart";
 import ContextProvider from "./context/contextProvider";
 import About from "./components/About";
+import Contacts from "./components/Contacts";
 import { useState } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
-const routers = createBrowserRouter([
-  {
-    path: "/",
-    element: <ProductCart></ProductCart>,
-  },
-  {
-    path: "/about",
-    element: <About></About>,
-  },
-  {
-    path: "/home",
-    element: <Home></Home>,
-  },
-]);
+
 function App() {
   const [show, setShow] = useState(false);
 
@@ -32,7 +20,15 @@ function App() {
     <ContextProvider>
       <Nav onOpen={handleShow}></Nav>
       <Heading></Heading>
-      <RouterProvider router={routers}></RouterProvider>
+      <main>
+        <Routes>
+          <Route path="/home" element={<Home></Home>}></Route>
+          <Route path="/" element={<ProductCard></ProductCard>}></Route>
+          <Route path="/about" element={<About></About>}></Route>
+          <Route path="/contacts" element={<Contacts></Contacts>}></Route>
+        </Routes>
+      </main>
+
       <Cart onClose={handleClose} onOpen={handleShow} current={show}></Cart>
     </ContextProvider>
   );
