@@ -13,13 +13,16 @@ const Contacts = () => {
   async function onFormSubmit(e) {
     e.preventDefault();
     try {
-      const res = await fetch("////", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(inputData),
-      });
+      const res = await fetch(
+        "https://first-react-project-6fc63-default-rtdb.firebaseio.com/queries",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(inputData),
+        }
+      );
       const res2 = await res.json();
-      console.log(res);
+      console.log(res2);
     } catch (err) {
       console.log(err);
     }
@@ -39,7 +42,7 @@ const Contacts = () => {
       ></input>
       <input
         onInput={(e) => input("Phone", e.target.value)}
-        type="phone"
+        type="tel"
         placeholder="Phone"
       ></input>
       <button type="submit">Submit</button>
